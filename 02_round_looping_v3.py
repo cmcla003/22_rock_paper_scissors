@@ -42,7 +42,6 @@ while end_game == "no":
     if choose == "exit":
         break
 
-
     if rounds_played == rounds -1:
         end_game = "yes"
 
