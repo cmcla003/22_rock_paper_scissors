@@ -35,6 +35,8 @@ while end_game == "no":
         heading = "Continous Mode: Round {}".format(rounds_played+1)
     else:
         heading = " Round {} of {}".format(rounds_played+1, rounds)
+        if rounds_played == rounds - 1:
+            end_game = "yes"
 
     print(heading)
     choose = input("{} or exit to end: ".format(choose_instruction))
@@ -42,8 +44,6 @@ while end_game == "no":
     if choose == "exit":
         break
 
-    if rounds_played == rounds -1:
-        end_game = "yes"
 
     print(heading)
     print("You chose : {}".format(choose))
