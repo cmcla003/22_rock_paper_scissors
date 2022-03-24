@@ -64,6 +64,10 @@ while end_game == "no":
     choose = choice_checker("Choose rock / paper / scissors (or exit to quit): ", rps_list,
                                  "Please enter rock / paper / scissors or exit to quit.")
 
+    # get computer choice
+    comp_choice = random.choice(rps_list[:-1])
+    print("Computer Choice:",comp_choice)
+
     if choose == "exit":
         break
 
