@@ -55,25 +55,39 @@ while end_game == "no":
     if rounds == "":
         heading = "Continous Mode: Round {}".format(rounds_played+1)
     else:
-        heading = " Round {} of {}".format(rounds_played+1, rounds)
+        heading = "Round {} of {}".format(rounds_played+1, rounds)
         if rounds_played == rounds - 1:
             end_game = "yes"
 
     print(heading)
     # ask user for choice and check it's valid
-    choose = choice_checker("Choose rock / paper / scissors (or exit to quit): ", rps_list,
+    user_choice = choice_checker("Choose rock / paper / scissors (or exit to quit): ", rps_list,
                                  "Please enter rock / paper / scissors or exit to quit.")
 
     # get computer choice
     comp_choice = random.choice(rps_list[:-1])
-    print("Computer Choice:",comp_choice)
 
-    if choose == "exit":
+    # compare user choice with computer choice
+    if user_choice == comp_choice:
+        result = "Draw"
+    elif user_choice == "rock" and comp_choice == "scissors":
+        result = "Win"
+    elif user_choice == "paper" and comp_choice == "rock":
+        result = "Win"
+    elif user_choice == "scissors" and comp_choice == "paper":
+        result = "Win"
+    else:
+        result = "You lose"
+
+    print("You chose {}, Computer chose {}. "
+          "\nResult: {}".format(user_choice, comp_choice, result))
+
+    # exit code to end program ealry / if in continuous mode
+    if user_choice == "exit":
         break
 
 
     print(heading)
-    print("You chose : {}".format(choose))
     print()
     rounds_played +=1
 
