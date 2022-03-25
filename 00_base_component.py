@@ -39,6 +39,7 @@ def check_rounds(question, error):
 # Lists / Initalised variables go here
 yes_no_list = ["yes", "no"]
 rps_list = ["rock","paper","scissors","exit"]
+summary_stats = []
 rounds_played = 0
 rounds_lost = 0
 rounds_draw = 0
@@ -89,9 +90,8 @@ while end_game == "no":
     print("You chose {}, Computer chose {}. "
           "\nResult: {}".format(user_choice, comp_choice, result))
 
-    # exit code to end program ealry / if in continuous mode
-    if user_choice == "exit":
-        break
+    summary_stats.append(result)
+
 
 
     print(heading)
@@ -101,13 +101,22 @@ while end_game == "no":
     # calculate numbers of win
     rounds_won = rounds_played - rounds_lost - rounds_draw
 
+# calculate game stats
+percent_win = rounds_won / rounds_played * 100
+percent_lose = rounds_lost / rounds_played * 100
+percent_draw = rounds_draw / rounds_played * 100
 
 print("Thanks for playing")
 
 # Ask user is they want to see their game history
 # If yes show history
+print()
+print("*** Game History ***")
+for game in summary_stats:
+    print(game)
 
 # Show game statistics
 print()
-print("**** End Game Summary ***")
-print("Won: {} \t | \t Lost: {} \t | \t Draw: {}".format(rounds_won,rounds_lost,rounds_draw))
+print(" *** Game Statistics ***")
+print("Win:{} | {:.0f}% \nLoss:{} | {:.0f}% \nDraw:{} | {:.0f}%"
+      .format(rounds_won,percent_win,rounds_lost,percent_lose,rounds_draw,percent_draw))
